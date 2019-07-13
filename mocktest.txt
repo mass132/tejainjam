@@ -1,0 +1,194 @@
+package com.capgemini.takehome.ui;
+import java.util.Scanner;
+
+import com.capgemini.takehome.bean.Product;
+import com.capgemini.takehome.service.ProductService;
+public class Client {
+	int q1,a1;
+	ProductService s=new ProductService();
+	
+	void choice (){
+
+	while(true) {
+		System.out.println("1.Generate Bill by entering Product code and quantity");
+		System.out.println("2.Exit");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		
+		switch (n) {
+		case 1:
+			System.out.println("enter the product details/n");
+			System.out.println("product id");
+			a1=sc.nextInt();
+			boolean b1=s.geterror(a1);
+			if(b1) {
+				Product p1=s.getproductDetails(a1);	
+				System.out.println(p1);
+			System.out.println("\n enter quantity");
+			q1=sc.nextInt();
+			System.out.println("quantity="+q1);
+			long p7=s.getquantity(q1, a1);
+			System.out.println("line total rs ="+p7);
+			}
+			else {
+			System.out.println("sorry wrong id ");
+		    }
+			break;
+		case 2:
+			System.out.println(" thank you");
+			break;
+		}}}
+
+	public static long Productidcheck (long Productid)
+	{		
+			if(Productid.matches("[0-9]{4}",Productid))
+			{
+			return Productid;
+		   }
+			else
+			{
+				System.out.println("please enter valid product id");
+				System.out.println("enter the id again");
+			}
+	}
+	public static void main(String[] args) {
+		
+		Client a=new Client();
+		a.choice();
+	}}
+=============================================================================
+package com.capgemini.takehome.bean;
+
+public class Product {
+	private String ProductName;	
+	private int Productid;
+	private String ProductCategory;	
+	private String ProductDescription;
+	private long ProductPrice;
+	private int Quantity;
+	public String getProductName() {
+		return ProductName;
+	}
+	public void setProductName(String productName) {
+		ProductName = productName;
+	}
+	public int getProductid() {
+		return Productid;
+	}
+	public void setProductid(int productid) {
+		Productid = productid;
+	}
+	public String getProductCategory() {
+		return ProductCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		ProductCategory = productCategory;
+	}
+	public String getProductDescription() {
+		return ProductDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		ProductDescription = productDescription;
+	}
+	public long getProductPrice() {
+		return ProductPrice;
+	}
+	public void setProductPrice(long productPrice) {
+		ProductPrice = productPrice;
+	}
+	public int getQuantity() {
+		return Quantity;
+	}
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
+	}
+	public Product(int productid,String productName,  String productCategory, String productDescription,
+			long productPrice) {
+		super();
+		ProductName = productName;
+		Productid = productid;
+		ProductCategory = productCategory;
+		ProductDescription = productDescription;
+		ProductPrice = productPrice;
+		Quantity = Quantity;
+	}
+	@Override
+	public String toString() {
+		return "Product [ProductName=" + ProductName + ", Productid=" + Productid + ", ProductCategory="
+				+ ProductCategory + ", ProductDescription=" + ProductDescription + ", ProductPrice=" + ProductPrice
+				+ ", Quantity=" + Quantity + "]";
+	}
+
+}
+==============================================================================================
+package com.capgemini.takehome.util;
+import java.util.HashMap;
+import java.util.Map;
+import com.capgemini.takehome.bean.Product;
+public class CollectionUtil {
+	 HashMap<Integer, Product>  products=new HashMap<Integer, Product>();
+			public Map CollectionUtil() {
+		Product p1=new Product(12,"iPhone","Electronics","smartphone", 35000);
+		Product p2=new Product(122,"iPhone","Electronics","smartphone", 35000);	
+	    Product p3=new Product(1233,"iPhone","Electronics","smartphone", 35000);	
+	    Product p4 =new Product(144,"iPhone","Electronics","smartphone", 35000);
+   products.put(12, p1);
+   products.put(123, p2);
+   products.put(1233, p3);
+   products.put(321, p4);
+return products;
+	      }
+
+}
+=========================================================
+package com.capgemini.takehome.dao;
+
+import java.util.Map;
+
+import com.capgemini.takehome.bean.Product;
+import com.capgemini.takehome.util.CollectionUtil;
+
+public class ProductDAO {
+CollectionUtil d =new CollectionUtil();
+int a1,q1;
+long k1;
+Map w1=d.CollectionUtil();
+public Product getproductdetails(int a1 ) {
+	return(Product)w1.get(a1);
+}
+public boolean geterror(int a12) {
+if(w1.containsKey(a12)) {
+	return true;
+}
+else {
+	return false;
+}
+}
+public long getquantity(int q12, int a12) {
+Product pro1=(Product) w1.get(a12);
+long dep1=pro1.getProductPrice();
+k1=dep1*q12;
+	return k1;
+}
+}
+==========================================================
+package com.capgemini.takehome.service;
+import com.capgemini.takehome.bean.Product;
+import com.capgemini.takehome.dao.ProductDAO;
+public class ProductService {
+ProductDAO d=new ProductDAO();
+public Product  getproductDetails(int a1)
+{
+	Product p2=d.getproductdetails(a1);
+			return p2;
+}
+public long getquantity(int q,int a) {
+	long p31=d.getquantity(q,a);
+	return p31;	
+}
+public boolean geterror(int a1)
+{
+	boolean p3=d.geterror(a1);
+	return p3;
+}
+}
