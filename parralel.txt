@@ -1,0 +1,503 @@
+////package com.java.parallelBean;
+public class TransBean {
+private long transid;
+private long Accountnumber;
+private long Amount;
+private long Amountrecieved;
+private String Transtype;
+private String Transdate;
+public TransBean()
+{
+	super();
+	this.transid=transid;
+	this.Accountnumber=Accountnumber;
+	this.Amount=Amount;
+	this.Amountrecieved=Amountrecieved;
+	this.Transtype=Transtype;
+	this.Transdate=Transdate;
+}
+@Override
+public String toString() {
+	return "TransBean [transid=" + transid + ", Accountnumber=" + Accountnumber + ", Amount=" + Amount
+			+ ", Amountrecieved=" + Amountrecieved + ", Transtype=" + Transtype + ", Transdate=" + Transdate + "]";
+}
+public long getTransid() {
+	return transid;
+}
+public void setTransid(long transid) {
+	this.transid = transid;
+}
+public long getAccountnumber() {
+	return Accountnumber;
+}
+public void setAccountnumber(long accountnumber) {
+	Accountnumber = accountnumber;
+}
+public long getAmount() {
+	return Amount;
+}
+public void setAmount(long amount) {
+	Amount = amount;
+}
+public long getAmountrecieved() {
+	return Amountrecieved;
+}
+public void setAmountrecieved(long amountrecieved) {
+	Amountrecieved = amountrecieved;
+}
+public String getTranstype() {
+	return Transtype;
+}
+public void setTranstype(String transtype) {
+	Transtype = transtype;
+}
+public String getTransdate() {
+	return Transdate;
+}
+public void setTransdate(String transdate) {
+	Transdate = transdate;
+}
+
+}
+
+
+////
+
+package com.java.parallelBean;
+ public class Bean {
+private String name,dob,password;
+private Long bal, phoneno;
+private long bacc;
+public Bean(String name, String dob, String password, Long bal, Long phoneno, long bacc) {
+	super();
+	this.name = name;
+	this.dob = dob;
+	this.password = password;
+	this.bal = bal;
+	this.phoneno = phoneno;
+	this.bacc = bacc;
+}
+@Override
+public String toString() {
+	return "Bean [name=" + name + ", dob=" + dob + ", password=" + password + ", bal=" + bal + ", phoneno=" + phoneno
+			+ ", bacc=" + bacc + "]";
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getDob() {
+	return dob;
+}
+public void setDob(String dob) {
+	this.dob = dob;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
+public Long getBal() {
+	return bal;
+}
+public void setBal(Long bal) {
+	this.bal = bal;
+}
+public Long getPhoneno() {
+	return phoneno;
+}
+public void setPhoneno(Long phoneno) {
+	this.phoneno = phoneno;
+}
+public long getBacc() {
+	return bacc;
+}
+public void setBacc(long bacc) {
+	this.bacc = bacc;
+}
+public long fund(String string) {
+	return 0;
+}
+ }
+---------------------------------------------------------------------------------------
+
+
+
+package com.java.parallelDAO;
+public class AccountNotFoundException extends RuntimeException{
+	public  AccountNotFoundException(String s) {
+		super(s);
+	}
+}
+
+------------------------------------------------------------------------
+package com.java.parallelDAO;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import com.java.parallelBean.Bean;
+import com.java.parallelBean.TransBean;
+public class DAO implements DAOI {
+	HashMap<Long, Bean> hm1=new HashMap<Long, Bean>();
+	long bacc;
+	long dep2;
+	long w2,q1,q2;
+	long i=10000;
+	HashMap<TransBean,Long> hmt =new HashMap<TransBean,Long>();
+	ArrayList<TransBean> a1;
+	
+	public long service1(Bean b) {
+		this.bacc=b.getBacc();
+		hm1.put(bacc, b);
+		
+		if(hm1.containsKey(bacc))
+		{
+			return bacc;
+		}
+		else
+			return 0;
+	}
+	public long showbalance(long bacc2,String password1) {
+		Bean b1=(Bean) hm1.get(bacc2);
+		if(b1==null) {
+			throw new AccountNotFoundException("Invalid account number");
+		}
+		else {
+			long bal=b1.getBal();
+return bal;
+		}
+	}
+		//System.out.println(b1.getBal());
+		//long bal=b1.getBal();
+		//return bal;
+	
+	public long deposit1(long account2, String password2, long dep1) {
+		if(hm1.containsKey(account2))
+		{
+			Bean b1=(Bean) hm1.get(account2);
+			if(b1.getPassword().equals(password2))
+			{
+				dep2=b1.getBal() + dep1;
+				b1.setBal(dep2);
+				SimpleDateFormat ft = 
+					      new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+						Date d=new Date();
+					  TransBean tb=new TransBean();
+					  tb.setAccountnumber(account2);
+					  tb.setAmount(dep1);
+					  tb.setTransid(i++);
+					  tb.setTranstype("deposit");
+					  tb.setTransdate(ft.format(d));
+				      hmt.put(tb,account2);
+			}
+		}
+		return dep2;
+	}
+	public long withdraw(long account3, String password3, long w1) {
+		if(hm1.containsKey(account3))
+		{
+			Bean b1=(Bean) hm1.get(account3);
+			if(b1.getPassword().equals(password3))
+			{
+				w2=b1.getBal() - w1;
+				b1.setBal(w2);
+				SimpleDateFormat ft = 
+					      new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+						Date d=new Date();
+					  TransBean tb=new TransBean();
+					  tb.setAccountnumber(account3);
+					  tb.setAmount(w1);
+					  tb.setTransid(i++);
+					  tb.setTranstype("deposit");
+					  tb.setTransdate(ft.format(d));
+				      hmt.put(tb,account3);
+			}
+		}
+		return w2;
+	}
+	public long fund(long account4, long account5, String password4, long f1) {
+		Bean bal1=(Bean) hm1.get(account4);
+		Bean bal2=(Bean) hm1.get(account5);
+		q1=bal1.getBal()-f1;
+		q2=bal2.getBal()+f1;
+		bal1.setBal(q1);
+		bal2.setBal(q2);
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+				Date d=new Date();
+			  TransBean tb=new TransBean();
+			  tb.setAccountnumber(account5);
+			  tb.setAmount(f1);
+			  tb.setTransid(i++);
+			  tb.setTranstype("deposit");
+			  tb.setTransdate(ft.format(d));
+		      hmt.put(tb,account5);
+		return q1;
+	}
+	public boolean validation(long account4, String password4) {
+		if(hm1.containsKey(account4));
+		{
+			Bean b=(Bean) hm1.get(account4);
+					if(b.getPassword().equals(password4)) {
+						return true;
+					}
+		}
+		return false;
+	}
+	public boolean validation1(long account4, String password4, long account5) {
+		if(hm1.containsKey(account4)&&hm1.containsKey(account5));
+		{
+			Bean b=(Bean) hm1.get(account4);
+					if(b.getPassword().equals(password4)) {
+						return true;
+					}
+		}
+		return false;
+	}
+	
+	public List<TransBean> trans() {
+		List<TransBean> a1=new ArrayList<TransBean>(hmt.keySet());
+		return a1;
+	}
+
+	}
+	
+	
+	
+-----------------------------------------------------------------------------------
+package com.java.parallelUI;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import com.java.parallelBean.Bean;
+import com.java.parallelDAO.AccountNotFoundException;
+import com.java.parallelservices.Service;
+public class parallelUI {
+	static Scanner sc=new Scanner(System.in);
+	static long phoneno;
+	public static void main(String[] args) {
+		 Service s=new Service();
+		long bacc;
+		Scanner sc=new Scanner(System.in);
+		while(true)
+		{
+			System.out.println("*************Welcome*************");
+			System.out.println("Enter 1 for create account\nEnter 2 for Show Balance\nEnter 3 for Deposit");
+			System.out.println("Enter 4 for withdraw\nEnter 5 for fund transfer\nEnter 6 for print Transaction");
+			System.out.println("Enter 7 for exit");	
+			System.out.println("enter the stage number");
+			int n=sc.nextInt();
+			switch(n) {
+			case 1:  			                                                   //Create Account
+			 		 System.out.println("Enter name");
+			 		 String name = nameCheck(sc.next());
+			 		 System.out.println("enter dob");
+			 		 String dob= dateCheck(sc.next());
+			 		 System.out.println("Enter account password");
+			 		 String password=passwordCheck(sc.next());
+			 		 System.out.println("enter phoneno");
+			 		 long phoneno1 =sc.nextLong();
+			 		long phoneno= numbercheck( phoneno1);
+			 		 long intialBal=20000;
+			 		long accNumb=phoneno+1000;
+			 		 Bean b=new Bean(name,dob,password, intialBal,phoneno,accNumb);
+			 		 long accNum=s.service(b);
+			 		System.out.println("Account number is  "  +accNum);
+			 		 break;		
+		    case 2:			    													//Show Balance
+				System.out.println("Account Number");  
+				long bacc11=sc.nextLong();
+				System.out.println("Enter account password");
+		 		 String password1= sc.next();
+		 		 try {	
+				long balance=s.showbalance(bacc11,password1);
+				System.out.println("bal :"+balance);
+		 		 }
+		 		 catch(AccountNotFoundException exception)
+		 		 {
+		 		 System.out.println(exception.getMessage());
+		 		 }
+				break;
+		
+			case 3: 															        //Deposit 
+				System.out.println("enter account number");
+				long account2=sc.nextLong();
+				System.out.println("enter password");
+				String password2=sc.next();
+				boolean val1=s.validation(account2, password2);
+						if(val1) {
+							
+				System.out.println("enter deposit amount");
+				long dep1=sc.nextLong();
+				long al1=s.deposit(account2,password2,dep1);
+				System.out.println("balance after deposit");
+				System.out.println(al1);
+						}
+						else {
+							System.out.println("it is not valid number");
+						}
+				break;
+			case 4: 															     //Withdraw
+				System.out.println("enter account number");
+				long account3=sc.nextLong();
+				System.out.println("enter password");
+				String password3=sc.next();
+				boolean val2=s.validation(account3,password3);
+				if(val2) {
+					
+				System.out.println("enter withdraw amount");
+				long wit1=sc.nextLong();
+				long w=s.withdraw(account3,password3,wit1);
+				System.out.println("balance after withdraw");
+				System.out.println(w);
+				}
+				else {
+					System.out.println("it is not valid number");
+				}
+				break;
+			case 5:																		//Fund Transfer
+				System.out.println("enter account1 to account2");
+				long account4=sc.nextLong();
+				System.out.println("enter  account2 from account1");
+				long account5=sc.nextLong();
+				System.out.println("enter password1");
+				String password4=sc.next();				
+				boolean valid =s.validation1(account4,password4,account5);
+				if(valid) {
+					System.out.println("account is valid and password is correct");
+					System.out.println("enter the fund amount");
+					long f1=sc.nextLong();
+					long bal2=s.fund(account4, account5, password4, f1);
+					System.out.println("amount 1 balance ");
+					System.out.println(bal2);
+				}
+				else
+				{
+					System.out.println("enter valid account number and password");
+				}
+				break;
+			case 6:                                                             //Print Transactions
+				System.out.println("account number");
+				long acc=sc.nextLong();
+				List aq1=s.trans();
+				System.out.println(aq1);
+				break;
+			case 7:																		//Exit
+				System.out.println("thank you");
+				break;
+			}	
+			}
+	}
+public static long numbercheck(long phoneno1)                    
+{	
+	if(String.valueOf(phoneno1).length()==10)
+	{
+		System.out.println("your number is correct");		
+	}
+	else
+	{		
+		System.out.println("enter valid mobile number");
+		phoneno1=sc.nextLong();
+	}
+	return phoneno1;
+}
+public static String nameCheck(String name)
+{
+	while(true) {
+	if(Pattern.matches("([A-Z][a-zA-Z]*?)",name))
+	{
+	
+		return name;
+	}
+	else {
+		System.out.println("please enter the valid name");
+		System.out.println("enter the name again");
+		 name=sc.next();
+	}
+}}
+public static String dateCheck(String dob)
+{		
+		if(Pattern.matches("[0-9]{8}",dob))
+		{
+		return dob;
+	   }
+		else
+		{
+			System.out.println("please enter valid date of birth");
+			System.out.println("enter the date of birth again");
+			dob=sc.next();
+		}
+		return dob;
+}
+public static String passwordCheck(String password)
+{		
+		if(String.valueOf(password).length()==8 && password.matches("[A-Z]"))
+		{
+		return password;
+	   }
+		else
+		{
+			System.out.println("please enter mininum 8 characters");
+			password=sc.next();
+		}
+		return password;
+}
+}
+
+
+----------------------------------------------------------------------------------------------------
+package com.java.parallelservices;
+import java.util.List;
+
+import com.java.parallelBean.Bean;
+import com.java.parallelDAO.DAO;
+public class Service {
+	DAO d=new DAO();
+	public long service(Bean b) {
+	    long accNum1=d.service1(b);
+    return accNum1;
+}
+public long showbalance(long bacc,String password1) {
+	long bal=d.showbalance(bacc,password1);
+	return  bal;	
+}
+public  long deposit(long account2, String password2, long dep1) {
+	long d1= d.deposit1(account2,password2,dep1);
+	System.out.println(d1);
+	return  d1;	
+}
+public long withdraw(long account3, String password3, long wit1) 
+{
+long w1=d.withdraw(account3, password3, wit1);
+	return w1;
+}
+public long fund(long account4,  long account5,String password4,long f1) 
+{
+long f=d.fund(account4, account5, password4, f1);
+	return f;
+}
+
+public boolean validation(long account2, String password2)
+{
+	boolean d11=d.validation(account2,password2);
+	return d11;
+}
+public boolean validation1(long account4, String password4, long account5) {
+	boolean d11=d.validation1(account4,password4,account5);
+	return d11;
+}
+public List trans() {
+	List aq2=d.trans();
+
+	return aq2;
+}
+}
+
+
+---------------------------------------------------------------------------------------------------
