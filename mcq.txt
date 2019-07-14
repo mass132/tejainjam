@@ -1,0 +1,771 @@
+1)When access modifier is omitted from the definition of the member of a class
+the member has?
+
+a)default access
+b)public access
+c)private access
+d)protected access
+
+2)Which of the following are features of java programming
+language?
+
+a)Robust
+b)Multithreaded
+c)Interpreted
+d)All of the above
+
+3)Which of the following statements are true?
+
+a)No arg constructor is always supplied by the compiler
+b)Constructors cannot be overloaded
+c)Constructors cannot have return type
+d)Constructors can be static
+
+4)what all gets printed when the following code is compiled
+and run?
+
+public class Test{
+    public static void main(String args[]){
+
+        for(int i=0;i<2;i++){
+        for(int j=2;j>=0;j--){
+              
+	if(i==j) break;
+	System.out.println("i="+i+"j="+j);
+}}
+}}
+
+1) i=0 j=0
+2) i=0 j=1
+3) i=0 j=2
+4) i=1 j=0
+5) i=1 j=1
+6) i=1 j=2
+Select one correct answer from the options list
+a)1,3,5
+b)2,4,5
+c)1,2,5
+d)3,2,6
+
+5)What is true about the following code?
+
+1.enum EnumDemo{A}
+2.class Test{
+3.enum EnumD{B}
+4. void my_method(){
+5. enum EnumC{D}
+6.}}
+
+Select One Correct Answer from the options list
+
+a) The code compiles without any error
+b) The code compiles if we remove line number 1
+c)  The code compiles if we remove line number 5
+d)  None of the above is correct
+
+6)Memory dealloction in java is done by ?
+
+a) Programmer
+b) Operating System
+c) Garbage Collector
+d) None of the above
+
+7)Given code :
+
+ 1. public class Demo{
+ 2. public static void main(String args[]){
+ 3. byte var1=127;
+ 4. byte var2=126;
+ 5. byte result = var1+var2;
+  }
+  }
+
+Which statement is true?
+
+Select one answer from the Options list
+
+a) Compilation succeeds and d takes the value 253
+b) Line 5 contains an error that prevents compilation
+c) Line  5 throws an exception indicating "Out of range"
+d) Line 3 and 4 contain errors that prevent compilation
+
+8)public  class test{
+
+     static void methodA(short s){
+      System.out.println("methodA(short) called");
+     }
+      static void methodA(int i){
+      System.out.println("methodA(int) called");
+     }
+     static void methodB(float f){
+      System.out.println("methodB(float) called");
+     }
+     static void methodB(double d){
+      System.out.println("methodB(double) called");
+     }
+     public static void main(String args[]){
+  
+         methodA(5);
+          methodB(5.2);
+    }}
+
+Select one answer 
+
+a) methodA(short) called
+b) methodA(int) called
+c) Exception
+d) Compilation Error
+
+9) Given 
+    float result;
+    result=5/2;
+    System.out.println(result);
+
+What will be the output ?
+
+a) 2
+b) 2.0
+c) 2.5
+d) error
+
+10)Given the following code fragment
+     
+    XXX choic: //variable choice is declared and initialized here
+
+    switch(choice){
+      case 100 : System.out.println("One Hundred");break;
+      case 20 : System.out.println("twenty");break;
+      case 30 : System.out.println("Thirty ");break;
+     }
+
+a) byte choice=100;
+b) short choice = 100;
+c) int choice =100;
+d) All of the above
+
+
+11) Which of the following is the correct code to add a column for Phone
+     in Emp Table?
+
+a) ALter table emp add phone number(10);
+b) Alter table emp modify phone number(10);
+c) Modify Table emp add phone number(10);
+d) ALter emp add phone number(10)
+
+
+12) which of the following annotation allows to run the same test with
+    different data ?
+
+a) Annotate class with @RunWith(parame.class)
+b) Annotate class with @RunWith(Parameterized.class)
+c) Annotate class wtih @RunWith(parameter.class)
+d) Annotate class with @RunWith(MultiParam.class)
+
+
+13)Select ename,Max(sal) from emp where ename Not like 'A%' group by deptno.
+
+A) it will execute and display the ename who earns max Salary 
+B) it will give error
+c) it will displays department wise highest salary and name of employee
+d) All employee names whose name does not start with Letter 'A'
+
+
+14) An educational institution has three branches in a state. Details of the
+      students are store in student table.
+      when the student details are stores,the branch name column should
+     contain the branch name of any of the three.
+    What type of constraint can be applied to the branch name column.
+
+a) Primary Key Constraint
+b) Referential Constraint
+c) Check constraint
+d) Unique key Constraint
+
+
+
+15)
+Consider the below code. we want to execute the below test method 10 times?
+   
+which of the correct annotation statement
+//apply annotation here
+@Test
+void testMethod(){
+//...some test code
+}
+
+a) @RepeatTest(10)
+b) @RepeatedTest(10)
+c)  @Test(repeat=10)
+d) @Test(count=10)
+
+16)How can you retrieve information from a ResultSet?
+
+A) By Invoking the retrieve() method on the ResultSet and Passing the
+       column name to it
+B) By Invoking the method get(...Type type) on the ResultSet,Where Type is an
+     object which represents a database type
+c) By Invoking the method getValue(.......)
+d) By Invoking the special getter methods on the ResultSet
+           getString(...),getInt(...),getFloat(....)
+
+
+17)Which of the below statment is false about ConcurrentHashMap :
+
+a) The Underdefined dataStructure for ConcurrentHashMapp is Hashtable
+
+b) ConcurrentHashMap class is thread-safe i.e,multiple thread can operate
+     on a single Object without any complications
+
+c)At a time any number of threads are applicable for read operation
+    without locking the concurrentHashMap object
+
+d)At a time any number of threads are applicable for write opertion
+    with out locking the ConcurrentHashMap Object.No need to lock the Object
+
+
+18)
+
+Line 1 : Class.forName("oracle.jdbc.driver.OracleDriver");
+Line 2 : Connection con = DriverManager.getConnection
+              ("jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+Line 3: Statement st = con.createStatement();
+Line 4: ResultSet rst = st.executeQuery("select ename,sal from emp");
+Line 5: while(rst.next()){
+Line 6: System.out.println(rst.getInt(1)+" "+rst.getInt(2));}
+
+A) At line 1 driver class name is not correct
+B) At Line 2 Connection url or user is wrong
+C) At Line 4 Syntax of Sql Query is not Correct
+D) At Line 6 in place of rst.getInt(1)->rst.getString(1) should be used
+      because ename is String
+
+
+19) Which of the following is efficient than statement due to 
+           pre-compilation of Sql?
+A) Statement
+B) PreparedStatement
+C) CallableStatement
+D) ResultSetMetadata
+
+20) 
+Which of the following collection is ordered(order of insertion)collections?
+
+A) HashSet
+B) LinkedHashSet
+C) TreeSet
+D) HashMap
+
+
+
+21)
+
+@FunctionalInterface
+public interface MyInterface{
+
+ void checkName(); 
+ void chekSalary();
+}
+
+Pawan has created the above interface,but he is getting some compilation
+error.
+
+Which of the following options can be used to correct the error ?
+
+A)Functional Interface should not contain more than one method so one
+   method should be remove to resolve Compilation error
+
+B)Functional Interface should not contain more than one method so if
+   pawan does not want to use this interface for lamda expression then
+   FunctionInterface annotation should be removed to resolve the compilation
+   error
+
+22) Given
+
+Integer i = new Integer(25);
+
+int i2=25;
+
+System.out.println(i==i2);
+
+What will be the output of the above code fragment?
+
+A) Will print true
+B) Compilation Error
+C) CastException
+D) Runtime Exception
+E) Will print false
+
+
+22) Consider the following code snippet:
+
+Line 1: public static void main(String args[]){
+Line 2: List names = new ArrayList();
+Line 3: names.add("ramu");
+Line 4: names.add("vinod");
+Line 5: names.add("raju"):
+Line 6: names.add("laxmi");
+Line 7: names.add("Rupesh");
+Line 8: //insert the code here
+Line 9: }}
+
+which of the following has to inserted at Line-8 in above code snippet
+for printing the name of ArrayList using MethodReference syntax ?
+
+A) names.foreach(System.out::println);
+B) names.forEach(System.out::println);
+
+23)
+Which collection class(es) allows you to grow or shrink its size and
+provides indexed access to its elements but whose methods are not
+synchronized?
+
+A) java.util.HashSet
+B) java.util.LinkedHashSet
+C) java.util.ArrayList
+D) java.util.Vector
+
+24) 
+While serializing object,if you want some members of class not to get
+serialized ,how will you achieve this?
+
+A) declare member as final
+B) declare member as static
+C) declare member as transient
+D) declare member as volatile
+
+25) public class Test{
+    
+      public static void main(String args[]){
+      
+       List al = new ArrayList();
+       al.add(7);
+       al.add(1);
+       al.add(5);
+       al.add(1);
+
+       al.remove(1);
+        System.out.println(al);
+        }}    
+ 
+A) [7,1,5,1]
+B) [7,5,1]
+c) [7,5]
+d) [7,1,5]
+
+26) 
+
+Which of the following Lamda Expressions is invalid to perform addition
+of two numbers ?
+
+A) (x,y)->x+y;
+B) (Integer x,Integer y)->{return x+y;}
+c)  (Integer x,Integer y)->(x+y);
+d) (Integer x,Integer y)-> (x+y);
+
+
+27)
+which of the following type of jdbc driver talks with the server-side middle
+ware that then talks to database?
+
+A) JDBC-Net,pure java driver
+B) Native-Api, partly java driver
+C) Native-protocol, pure java driver
+d) JDBC-ODBC Bridge plus ODBC driver
+
+
+28)
+Which of the following is the correct way of obtaining a stream from 
+the collection ?
+
+A) collectionObj.stream();
+B) collectionObj.streams();
+C) collectionObj.getStream();
+D) collectionObj.createStream();
+
+
+
+29) Consider the following declarations :
+
+public class Employee{
+   String ename;
+    int age;
+
+   public Employee(String ename,int age){
+     this.ename=ename;
+     this.age=age;
+   }
+
+And
+public class Test{
+public static void main(String args[]){
+
+  Employee e1 = new Employee("sachin",30);
+  Employee e2 = new Employee("rahul",28);
+
+  TreeMap tm = new TreeMap();
+   
+  tm.put(e1,"first");
+  tm.put(e2,"second");
+
+ System.out.println("\n "+tm);
+ }}
+ A) {Name:sachin age:30=second}
+ B) {first=Name:sachin  age:30,second=Name:rahul age:28}
+ c) {second=Name:rahul age 28, first=Name:sachin age:30}
+ D) ClassCastException as class Employee does not implement comparable
+      interface
+
+ 30)
+ A ________represents a functional interface that takes an argument and
+ returns no result in lambda expresssion;
+
+ A) Consmer<T>
+ B) Supporter<T>
+ C) Predicate<T>
+ D) Boolean Supplier<T>
+
+
+ 31)
+    Tha class DataInputStream extends ________ and implements
+    the interface DataInput
+
+ A) FileInputStream
+ B) SequenceInputStream
+ C) FilterInputStream
+ D) InputStream 
+
+32) Select the correct Options
+
+Multiple Choice
+
+A) you can not handle runtime exceptions
+B) You should not handle Errors
+C) If a method throws a checked exception,it must be either handled by
+     the method or specified in its throws clause.
+D) If a method throws a runtime exception, it may be include the
+      exception in its throws clause.
+E) Runtime exceptions are checked exceptions.
+
+
+33) public class TestApp{
+       public static void main(String args){
+         
+           List<String> strList =Arrays.asList("java","scala","C++","Haskwell","Lisp");
+ List<String> filtered = strList.stream().filter(x->x.length()>4).collect(Collectors.toList());
+    System.out.println(filtered);
+    }}
+
+A) [scala,Haskell]
+B) [java,scala,Lisp]
+C) [java,Scala,C++,Haskell,Lisp]
+D) [C++,Haskell,Lisp]
+
+
+34) Which of the below Statement is false about static methods ?
+
+A) They can only call other static methods
+B) They can access only static data
+C) They can refer super or this in anyway
+D) They can not access non static variables
+
+35)
+    public static void before(){
+     
+      Set s = new TreeSet();
+      
+      s.add("2");
+      s.add(3);
+      s.add("1");
+       Iterator it = set.Iterator();
+       while(it.hasNext()){
+        System.out.println(it.next()+" ");
+      }}
+   Which statement is true?
+    A) The before() method will print 1 2
+    B) The before() method will print 1 2 3
+    C) The before() method will print three numbers. 
+          but the order cannot be determined
+    D) The before() method will throw an exception at runtime.
+
+36)
+  WHich of the following sleep method will give a delay of 5 sec
+   in thread execution ?
+
+A) Thread.sleep(5)
+B) Thread.sleep(5000)
+C) Thread.sleep(0.5)
+D) Thread.sleep(500)
+
+37)
+ Which of the following statements are true regarding JDBC API?
+Mutiple Choice
+
+A) Connection Pooling increases performance of applications
+       by reusing connection Objects
+B)  DataSource Interface is used to retrieve data from any non RDBMS System
+C)  DriverManager.getConnection() method returns the same connection
+     no matter how many times it called.
+D) JDBC type 4 driver is a pure java driver
+
+38) State Whether True or False
+      The Thread in SingleExecutorService pattern will be kept alive as long
+      as pool is alive.
+
+A) True
+B) False
+
+39) What will be the Output following execution ?
+
+public class Test {
+
+  public static void main(String args[]){
+    System.out.println(new String("Hello") instanceof String);
+     System.out.println("Hello" instanceof String);
+      System.out.println(new String("Hello") instanceof Object);
+      System.out.println("Hello" instanceof Object);
+}}
+A) true
+     true
+      true
+       true
+B)  false
+      true
+      true
+      false
+c) false
+    true
+    true
+     true
+d) false
+     false
+     false
+     false
+
+40) 
+    public class Business{}
+    class Hotel extends Business{}
+    class Inn extends Hotel{}
+     
+public class Travel{
+       
+      ArrayList<Hotel> go(){
+        //insert code here
+     }}
+
+ A) return new ArrayList<Inn>();
+ B) return new ArrayList<Hotel>();
+ C) return new ArrayList<Business>();
+ D) return new ArrayList<Object>();
+
+
+41)
+
+import java.util.TreeSet;
+public class Demo {
+public static void main(String[] args) {
+TreeSet<Integer> treeSet = new TreeSet<Integer>((o1, o2) -> (o1 > o2) ? -1
+: (o1 < o2) ? 1 : 0);
+treeSet.add(850);
+treeSet.add(235);
+treeSet.add(1080);
+treeSet.add(15);
+treeSet.add(5);
+System.out.println(treeSet);
+}
+}
+
+What will be the output?
+Single Choice - Select one correct answer from the options list.
+a) [1080, 850, 235, 15, 5]
+b) [1080, 850, 235, 5, 15]
+c) Compilation error
+d) []
+
+42)
+When we use both implements & extends keywords in a single java program then 
+what is the order of keywords to follow?
+
+ a)  We must use always extends first and then implements keyword.
+ b) We must use always implements first and later extends keyword.
+ c)  We can use the keywords in any order
+ d) extends and implements can't be used together
+
+43)
+To prevent inheritance of a class, which of the following keyword can be used?
+  
+ A) super
+ B) constant
+ C) class
+ D) Final
+
+44)
+Which of the following are two correct ways of loading database drivers in JDBC?    
+
+Single Answer:
+
+A)Class.loadName("oracle.jdbc.driver.OracleDriver");
+
+B)Class.forName("oracle.jdbc.driver.OracleDriver");
+  DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+
+D)Class.loadDriver("oracle.jdbc.driver.OracleDriver");
+
+E)class.forName("oracle.jdbc.driver.OracleDriver");
+   driverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+
+45)
+What is the output of below code ?
+
+public static void main(String args[])
+{
+int a=10;
+String name="null";
+try{
+a=name.length();
+a++;
+}catch(NullPointerException e){
+++a;
+return;
+}
+catch(RuntimeException e){
+a--;
+}
+finally{
+System.out.println(a);}}
+CHOOSE SINGLE ANSWER
+
+A) No Output
+B) 5
+C) NullPointerException
+D) Compilation error;
+
+46)
+Which of the following is not a core interface in Collection Framework?
+
+
+A) Collection
+B) Set
+C) List
+D) SortedSet
+
+47)
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+class Demo {
+public static void main(String[] args) {
+Stream<Integer> i = Stream.of(1, 2, 3, 4, 5, 6);
+long count = i.collect(Collectors.counting());
+System.out.println(count);
+
+}
+
+What will be the output?
+
+A) Compilation error
+B) Runtime error
+C) 6
+D) 5
+
+48)
+Which of the given statement is true about below query?
+SELECT AVG(sal), COUNT(*) FROM Emp GROUP BY deptno.
+
+Note : deptno from Emp refers deptno from Dept table.
+
+A) It will display average salary and number of employees from each department.
+B) It will generate error as COUNT(*) is not a group function
+C) It will generate error as AVG() is not a group function
+D) Both 2 and 3
+
+49)
+Which of the given statement is true about UnChecked Exceptions?
+
+A) They are checked by compiler at the time of compilation
+B) RuntimeException and its subclasses comes in the category of 
+     UnChecked Exception
+C) SQLException is unchecked exception.
+D) These exception must be handled in the code
+
+50)
+
+Which of the given are Junit building blocks?
+
+A) Junit Vintage
+B) Junit Jupitor
+C) Junit Platform
+D) All of the above
+
+51)
+
+Select correct query to find 2nd max salary:
+
+A) SELECT MAX(sal) AS salary 
+   FROM emp WHERE sal IN
+   (SELECT sal FROM emp MINUS SELECT MAX(sal) FROM emp);
+
+B) SELECT MAX(sal) AS salary 
+    FROM emp WHERE sal IN
+    (SELECT sal FROM emp PLUS SELECT MAX(sal) FROM emp);
+
+C) SELECT MAX(sal) AS salary FROM emp 
+     WHERE sal IN
+     (SELECT sal FROM emp PLUS SELECT MIN(sal) FROM emp);
+
+D) SELECT MAX(sal) AS salary FROM emp 
+    WHERE sal IN (SELECT sal FROM emp MINUS SELECT MNI(sal) FROM emp);
+
+52)
+___________ API  makes it easy to work with Date and Time.
+
+A) java.util.Date
+B) java.time package
+C) java.sql.date
+D) java.lang
+
+53) 
+Consider the following code and choose the correct option:
+
+class Data
+{ 
+Integer data; 
+Data(Integer d)
+{
+data=d;
+}
+ public boolean equals(Object o)
+{
+return true;
+}
+ public int hashCode()
+{
+return 1;
+}
+}
+class Test{
+ public static void main(String ar[]){
+   Set<Data> s=new HashSet<Data>();
+   s.add(new Data(4));
+   s.add(new Data(2));
+    s.add(new Data(4));
+    s.add(new Data(1));
+   s.add(new Data(2));
+  System.out.print(s.size());
+}}
+
+A) 3
+B) 1
+C) compilation error
+D) Compiles but error at run time
+
+54)
+Which of the given statement is true about below query?
+
+SELECT AVG(Sal), COUNT(*) FROM Emp GROUP BY deptNO.
+
+Note : deptNO from Emp  refers deptNO  from Dept table.
+
+A) It will display average salary and number of employees from each department.
+B) It will generate error as COUNT(*) is not a group function
+C) It will generate error as AVG() is not a group function
+D) Both 2 and 3
+
