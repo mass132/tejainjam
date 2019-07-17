@@ -1,0 +1,204 @@
+package com.capgemini.xyz.bean;
+
+public class Customer {
+private long custid;
+private String custName;
+private String address;
+private long mobile;
+private String email;
+public Customer( String custName, String address, long mobile, String email,long custid) {
+	super();
+	this.custid = custid;
+	this.custName = custName;
+	this.address = address;
+	this.mobile = mobile;
+	this.email = email;
+}
+@Override
+public String toString() {
+	return "Customer [custid=" + custid + ", custName=" + custName + ", address=" + address + ", mobile=" + mobile
+			+ ", email=" + email + "]";
+}
+public long getCustid() {
+	return custid;
+}
+public void setCustid(long custid) {
+	this.custid = custid;
+}
+public String getCustName() {
+	return custName;
+}
+public void setCustName(String custName) {
+	this.custName = custName;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public long getMobile() {
+	return mobile;
+}
+public void setMobile(long mobile) {
+	this.mobile = mobile;
+}
+public String getEmail() {
+	return email;
+}
+public void setEmail(String email) {
+	this.email = email;
+}
+
+}
+===============================================================================
+package com.capgemini.xyz.ui;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import com.capgemini.xyz.bean.Customer;
+import com.capgemini.xyz.bean.Loan;
+import com.capgemini.xyz.service.LoanService;
+public class ExecuteMain {
+	public static void main(String[] args) {
+		LoanService s = new LoanService();
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			System.out.println("XYZ finance company welcomes you");
+			System.out.println("1: Register Customer");
+			System.out.println("2: Exit");
+			int n = sc.nextInt();
+			switch (n) {
+			case 1:
+				System.out.println("enter your name"); // name validation
+				String custName = sc.next();
+				boolean custName12 = s.nameCheck(custName);
+				if (custName12) {
+					System.out.println(custName12);
+				} else {
+					System.out.println("enter a valid name");
+				}
+				System.out.println("enter address");
+				String address = sc.next();
+				System.out.println("enter mobile number");
+				Long mobile = sc.nextLong();
+				System.out.println("enter email");
+				String email = sc.next();
+				long custid = (long) (Math.random()*101010);
+				Customer cust = new Customer(custName, address, mobile, email, custid);
+				long custid1 = s.insertCust(cust);
+				System.out.println("your customerid is" + custid1);
+				System.out.println("successs fully created custid");
+				System.out.println(cust);
+				System.out.println("do you want apply for loan 1.yes 2.no");
+				int n1 = sc.nextInt();
+				switch (n1) {
+				case 1: // for applying the loan
+					System.out.println("enter the loan amount");
+					double loanAmount = sc.nextDouble();
+					System.out.println("enter custid");
+					long custId = sc.nextLong();
+					System.out.println("enter loan duration in years");
+					int duration = sc.nextInt();
+					long loanID = (long) (Math.random() * 101010);
+					Loan l = new Loan(loanID, loanAmount, custId, duration);
+					Loan loanId1 = s.applyLoan(l);
+					System.out.println("loan id created successfully");
+					System.out.println("your loanid is" + loanId1);
+					double emi = s.calculateEMI(loanAmount, duration);
+					System.out.println("calculated emi  " + emi);
+					break;
+				}
+			}
+		}
+	}
+
+}
+====================================================================================================
+package com.capgemini.xyz.service;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import com.capgemini.xyz.bean.Customer;
+import com.capgemini.xyz.bean.Loan;
+import com.capgemini.xyz.dao.LoanDao;
+
+public class LoanService {
+	LoanDao d = new LoanDao();
+
+	public long insertCust(Customer cust) {
+		long custid = d.insertcust(cust);
+		System.out.println(custid);
+		return custid;
+	}
+	public Loan applyLoan(Loan l) {
+		Loan loanid = d.applyLoan(l);
+		return loanid;
+	}
+	public static boolean nameCheck(String custName) {
+		while (true) {
+			if (Pattern.matches("([A-Z][a-zA-Z]*)", custName)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	public double calculateEMI(double loanAmount, int duration) {
+		double emi = d.calculateEMI(loanAmount, duration);
+		return emi;
+	}
+}
+======================================================================================
+package com.capgemini.xyz.dao;
+import java.util.HashMap;
+import com.capgemini.xyz.bean.Customer;
+import com.capgemini.xyz.bean.Loan;
+public class LoanDao {
+	HashMap<Long, Customer> hm1 = new HashMap<Long, Customer>();
+	HashMap<Long, Loan> hm2 = new HashMap<Long, Loan>();
+	long custid;
+	long loanid;
+	public long insertcust(Customer cust) {
+		this.custid = cust.getCustid();
+		hm1.put(custid, cust);
+		if (hm1.containsKey(custid)) {
+			return custid;
+		} else
+			return 0;
+	}
+	public Loan applyLoan(Loan l) {
+		this.loanid = l.getLoanID();
+		hm2.put(loanid, l);
+		if (hm2.containsKey(loanid)) {
+			return hm2.put(loanid, l);
+		} else
+			return null;
+	}
+	public double calculateEMI(double loanAmount, int duration) {
+		double p=loanAmount;
+        int n2=duration*12;
+        double emi;
+        double r=9.5/100;
+        emi=(p*r*(1+r)*n2)/((1+r)*n2-1);	
+		return emi;
+	}
+
+}
+==================================================
+package com.capgemini.xyz.dao;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import com.capgemini.xyz.bean.Customer;
+public class LoanDaoTest {
+Customer cust =new Customer("Pavan", "hyd", 90909990, "kdkkdk", 1423234);
+LoanDao d=new LoanDao();
+
+@Test
+public void insertcust() {
+	System.out.println("a");
+	long custid=d.insertcust(cust);
+	System.out.println(custid);
+	assertEquals(1423234,custid);
+}
+}
+=============================
