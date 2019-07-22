@@ -1,0 +1,173 @@
+<html>
+<head>
+<title> Registration Form</title>
+</head>
+<body style="background-image:url(w222.jpg)">
+<h3><center> REGISTRATION FORM</center></h3>
+<form action="login.html">
+<table align="center" cellpadding = "10">
+      <tr>
+            <td>UserName</td>
+            <td>
+    <input type="text" placeholder="Enter username" required><br></tr>
+     </td >
+    <td>Name</td>
+        <td>
+    <input type="text" placeholder="Enter name" required><br></tr>
+<br>
+<tr>   
+        <td>Password</td>
+        <td>
+    <input type="password" placeholder="Enter Password" required><br></td></tr>
+<br>       
+<td>Reenter password</td>
+<td>
+    <input type="password" placeholder="ReEnter Password" required></tr>
+<br>     
+<td>Date</td>
+<td>
+    <input type="date"   required></tr>
+<br>
+<tr>
+        <td>GENDER</td>
+        <td>
+        Male <input type="radio" name="Gender" value="Male" />
+        Female <input type="radio" name="Gender" value="Female" />
+        other <input type="radio" name="Gender" value="other" />
+        </td>
+        </tr>
+         <br>
+         <tr>
+         <td>Languages Known
+           English  <input type="checkbox" value ""/>
+           hindi <input type="checkbox" value ""/>
+        </td>
+         </tr>
+         <tr>
+                <td>MOBILE NUMBER</td>
+                <td>
+                <input type="text" name="Mobile_Number" maxlength="10" />
+                (10 digit number)
+                </td>
+                </tr>
+                  <tr>
+                <td>Upload</td>
+                <td>
+                <input type ="file"/>
+                </td>
+                </tr>
+
+                <td>Favourite Colour</td>
+                <td>
+                <input type ="color"/>
+                </td>
+                </tr>
+
+                <td>Download File</td>
+                <td>
+     <button><a href="Oracle for Developers (DBMS SQL)-LabBook.pdf">downloadfile</a></button>
+                </td>
+                </tr>              
+                <td>Qualification</td><td><select>               
+        <option>MTech</option> <option>BTech</option><option>Degree</option>
+                </select>
+            </td></tr>
+        <tr><td><input type ="submit"></form></td></tr>
+    </form></html>
+	
+	
+	
+	==========================================================================
+	<html>
+<head>
+    <title>Login</title>
+    </head>
+
+    <body>
+        <form action="welcome.html" method="get">
+            <h4> Login</h4>
+            <p1>Userame:</p1>
+            <input type="text" UserName=" "></br> 
+        <p2>Password</p2>
+        <input type="password"></br>
+        <input type="Submit" value="login">
+        </p>
+        </form>
+    </body>
+  </html>
+  ========================================
+  <body>
+  <table border ="5" cellpadding="9" cellspacing="5">
+  <tr>
+    <th>EmployeeName</th>
+    <th>Number</th>
+  </tr>
+  <tr>
+    <td>Pavan</td>
+</tr>
+    <tr>
+        <td>kumar</td>
+        <td rowspan="2">978998787</td>
+    </tr>
+</table>
+
+===================================================================
+<body>
+    <table border ="5" cellpadding="8" cellspacing="8">
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                    <td>pavan</td>
+                    <td>pavan@gmail.com</td>
+                </tr>
+                <tr>
+                        <td>2</td>
+                                <td>pavankumar</td>
+                                <td>pavankumar@gmail.com</td>
+                        </tr>
+                        <tr>
+                                <td>3</td>
+                                <td>madhu</td>
+                                <td>madhu@gmail.com</td>
+                        </tr>
+                        <tr>
+                                <td>4</td>
+                                <td>mad</td>
+                                <td>mad@gmail.com</td>
+                        </tr>
+    </table>
+</body>
+
+================================================================
+<html>
+<head>
+<style type="text/css">
+.abc{color:forestgreen}
+.xyz{text-align: center }
+#abc1{color:blue}
+#xyz1{text-align: center}
+</style>
+</head>
+<body>
+    <h1 class="abc xyz"> This is header h1</h1>
+    <h3 id="xyz1"> this is header h3</h3>
+
+</body>
+</html>
+
+================================================================
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="rgb.css">
+</head>
+<body>
+<h1 class="hello">i am formatted with a linked style sheet</h1>
+<p> me too</p>
+</body>
+</html>
+
+=======================================================
