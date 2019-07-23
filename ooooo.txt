@@ -1,0 +1,127 @@
+<html>
+<head>
+<title> Registration Form</title>
+</head>
+<script></script>
+<body style="background-image:url(w222.jpg)">
+<h3><center> REGISTRATION FORM</center></h3>
+<form action="login.html">
+<table align="center" cellpadding = "10">
+    <script>
+        function validate(){
+    var x=document.getElementById("a").value;
+    if(x.length<6){
+        document.getElementById("result").innerHTML="invalid";
+    }
+        else
+        {
+            document.getElementById("result").innerHTML="valid";
+
+        }
+    }
+    function validate1(){
+    var y=document.getElementById("b").value;
+    if(y.length<7){
+        document.getElementById("result1").innerHTML="invalid";
+    }
+        else
+        {
+            document.getElementById("result1").innerHTML="valid";
+        }
+    }
+    function numvalid(){
+        var n=document.getElementById("c").value;
+        var a1=/[7,8,9]+[0-9]{9}/;
+        if(n.match(a1))
+        {
+            document.getElementById("result2").innerHTML="valid";
+       }
+    else
+     {
+        document.getElementById("result2").innerHTML="invalid";
+     }
+}
+function validateemail(){
+                var x=document.getElementById("g").value;
+                var atposition =x.indexOf("@");
+                var dotposition=x.lastIndexOf(".");
+                if(atposition<1||dotposition<atposition+2 || dotposition+2>=x.length)
+                {
+                    document.getElementById("result3").innerHTML="invalid";
+
+                }
+                    else
+                    {
+                   
+                        document.getElementById("result3").innerHTML="valid";
+                    }
+            }
+           </script>
+      <tr>
+            <td>UserName</td>
+            <td>
+    <input type="text" pattern="[a-zA-Z0-9]{5,}" title="Minimum 5 letters"id="a" onkeyup="validate()"></td><td><p id="result"></p></td></tr>
+
+    <td>Name</td>
+        <td>
+    <input type="text" pattern=""[a-zA-Z]{7,} title="Minimum 7 letters"id="b" onkeyup="validate1()"></td><td><p id="result1"></p></td></tr>
+    <td>Gmail</td>
+    <td>
+     <input type="email" id="g" onkeyup="validateemail()"></td><td><p id="result3"></p></td></tr>
+<br>
+<tr>   
+        <td>Password</td>
+        <td>
+    <input type="password" placeholder="Enter Password" required><br></td></tr>
+<br>       
+<td>Reenter password</td>
+<td>
+    <input type="password" placeholder="ReEnter Password" required></tr>
+<br>     
+<td>Date</td>
+<td>
+    <input type="date"   required></tr>
+<br>
+<tr>
+        <td>GENDER</td>
+        <td>
+        Male <input type="radio" name="Gender" value="Male" />
+        Female <input type="radio" name="Gender" value="Female" />
+        other <input type="radio" name="Gender" value="other" />
+        </td>
+        </tr>
+         <br>
+         <tr>
+         <td>Languages Known
+           English  <input type="checkbox" value ""/>
+           hindi <input type="checkbox" value ""/>
+        </td>
+         </tr>
+         <tr>
+                <td>MOBILE NUMBER</td>
+                <td>                                                                                                               
+                <input type="number" maxlength="10" id="c" onkeyup="numvalid()"></td><td><p id="result2"></p></td></tr>/>             
+                  <tr>
+                <td>Upload</td>
+                <td>
+                <input type ="file"/>
+                </td>
+                </tr>
+
+                <td>Favourite Colour</td>
+                <td>
+                <input type ="color"/>
+                </td>
+                </tr>
+
+                <td>Download File</td>
+                <td>
+     <button><a href="Oracle for Developers (DBMS SQL)-LabBook.pdf">downloadfile</a></button>
+                </td>
+                </tr>              
+                <td>Qualification</td><td><select>               
+        <option>MTech</option> <option>BTech</option><option>Degree</option>
+                </select>
+            </td></tr>
+        <tr><td><input type ="submit"></form></td></tr>
+    </form></html>
