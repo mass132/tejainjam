@@ -1,0 +1,241 @@
+<html>
+     <head>
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Registratin Form</title>
+                <meta name="viewport"
+                content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="css/style.css">
+                <script>
+                src="//html5shim.googlecode.com/svn/trunk/html5.js">
+            </script>
+            <style>
+            .demo-content{
+                padding:15px;
+                font-size: 18px;
+                background:#dc3545;
+                margin-bottom: 15px;
+            }
+            .demo-content.bg-alt{
+                background:#dc3545;
+            }
+            </style>
+            </head>
+<body style="background-image:url(w222.jpg)"></body>
+<h3><center> REGISTRATION FORM</center></h3>
+<h4><center> please fill the registration form</center></h4>
+<form action="login.html" name="f1" onsubmit="checkpassword()">
+
+<table align="center" cellpadding = "10">
+    <script>
+        function validate(){
+    var x=document.getElementById("a").value;
+    if(x.length<6){
+        document.getElementById("result").innerHTML="invalid";
+    }
+        else
+        {
+            document.getElementById("result").innerHTML="valid";
+        }
+    }
+    function validate1(){
+    var y=document.getElementById("b").value;
+    if(y.length<7){
+        document.getElementById("result1").innerHTML="invalid";
+    }
+        else
+        {
+            document.getElementById("result1").innerHTML="valid";
+        }
+    }
+    function numvalid(){
+        var n=document.getElementById("c").value;
+        var a1=/[7,8,9]+[0-9]{9}/;
+        if(n.length==10 && n.match(a1))
+        {
+            document.getElementById("result2").innerHTML="valid";
+       }
+    else
+     {
+        document.getElementById("result2").innerHTML="invalid";
+     }
+}
+function validateemail(){
+                var x=document.getElementById("g").value;
+                var atposition =x.indexOf("@");
+                var dotposition=x.lastIndexOf(".");
+                if(atposition<1||dotposition<atposition+2 || dotposition+2>=x.length)
+                {
+                    document.getElementById("result3").innerHTML="invalid";
+
+                }
+                    else
+                    {
+                        document.getElementById("result3").innerHTML="valid";
+                    }
+            }
+            function password1(){
+    var pass11=document.getElementById("p1").value;
+    if(pass11.length<7){
+        document.getElementById("pass1").innerHTML="poor";
+    }
+        else
+        {
+            document.getElementById("pass1").innerHTML="good";
+        }
+    }
+    function password2(){
+    var pass22=document.getElementById("p2").value;
+    if(pass22.length<7){
+        document.getElementById("pass2").innerHTML="poor";
+    }
+        else
+        {
+            document.getElementById("pass2").innerHTML="good";
+        }
+    }
+                function checkpassword() {
+                    var password=document.getElementById("p1").value;
+                    var pass22=document.getElementById("p2").value;
+                    if (password == repassword) {
+        
+                        document.getElementById("result4").innerHTML="valid";
+                    }
+                    else {
+                        document.getElementById("result4").innerHTML="invalid";
+                        document.getElementById("result4").innerHTML="mismatch";
+                    }
+                }   
+               
+function checkDate(date) {
+ var chkdate = document.getElementById("d").value;
+checkDate(chkdate);
+    if (date == "") {
+        document.getElementById("date1").innerHTML="invalid";
+    }
+    else if (!date.match(/^(0[1-9]|[12][0-9]|3[01])[\- \/.](?:(0[1-9]|1[012])[\- \/.](19|20)[0-9]{2})$/)) {
+        document.getElementById("date1").innerHTML="valid";
+    }
+    var today = new Date();
+    if (today <= date) {
+        document.getElementById("date1").innerHTML="itsholud not be future date";
+    }
+}
+       </script>
+           <body>
+                <div class="container">
+                <div class="bs-example">
+                        <form action="login.html" method="post">                            
+                                        <tr>
+                                         <td>UserName</td>
+                                       <td>
+                   <div class="form-group row">
+                    <label for="input" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+    <input type="text" class="form-control" pattern=""[a-zA-Z]{7,} title="Minimum 5 letters"id="a" onkeyup="validate()"></td><td><p id="result"></p></td></tr>
+    </div></div>
+</thead>
+    <td>Name</td>
+        <td>
+                <div class="form-group row">
+                <label for="input" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+    <input type="text"class="form-control" pattern=""[a-zA-Z]{7,} title="Minimum 7 letters"id="b" onkeyup="validate1()"></td><td><p id="result1"></p></td></tr>
+</div></div>
+    <td>Gmail</td>
+    <td>
+            <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+     <input type="email"class="form-control" id="g" onkeyup="validateemail()"></td><td><p id="result3"></p></td></tr>
+    </div></div>
+     <br>
+<tr>   
+        <td>Password</td>
+        <td>
+                <div class="form-group row">
+                <label for="input" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+    <input type="password" class="form-control"name="password" id="p1" onkeyup="password1()"></td><td><p id="pass1"></p></td></tr>
+</div></div>
+    <tr>       
+<td>Reenter password</td>
+<td>
+        <div class="form-group row">
+        <label for="input" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+    <input type="password" class="form-control"name="repassword"id="p2" onkeyup="password2()"></td><td><p id="pass2"></p></td></tr>
+</div></div>
+    <tr>     
+<td>Date</td>
+<td>
+        <div class="form-group row">
+        <label for="input" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+    <input type="date" id="d" class="form-control"onkeyup="checkdate()"></td><td><p id="date1"></p></td></tr></tr>
+</div></div>
+    <tr>
+        <td>GENDER</td>
+        <td>
+                <div class="form-group row">
+                <label for="input" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+        Male <input type="radio" name="Gender" value="Male"/>
+        Female <input type="radio"class="form-control" name="Gender" value="Female"/>
+        other <input type="radio" class="form-control"name="Gender" value="other"/>
+    </div></div>
+        </td>
+        </tr>
+         <br>
+         <tr>
+         <td>Languages Known
+           English  <input type="checkbox" value ""/>
+           hindi <input type="checkbox" value ""/>
+        </td>
+         </tr>
+         <tr>
+                <td>MOBILE NUMBER</td>
+                <td>    
+                        <div class="form-group row">
+                                <label for="input" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">                                                                                                           
+                <input type="number" class="form-control"id="c" onkeyup="numvalid()"></td><td><p id="result2"></p></td></tr>                           
+            </div></div>
+            <tr>
+                <td>Upload</td>
+                <td>
+                        <div class="form-group row">
+                                <label for="input" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                <input type ="file"class="form-control"/>
+            </div></div>
+                </td>
+                <div class="form-group row">
+                <label for="input" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                </tr>
+                <td>Favourite Colour</td>
+                <td>
+                        <div class="form-group row">
+                        <label for="input" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                <input type ="color"class="form-control"/>
+            </div></div>
+                </td>
+                </tr>
+
+                <td>Download File</td>
+                <td>
+                        <div class="form-group row">
+                        <label for="input" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+     <button><a href="Oracle for Developers (DBMS SQL)-LabBook.pdf">downloadfile</a></button>
+                </td>
+                </tr>              
+                <td>Qualification</td><td><select>               
+        <option>MTech</option> <option>BTech</option><option>Degree</option>
+                </select>
+            </td></tr>
+        <tr><td><input type ="submit"></form></td></tr>
+    </div></div>
+    </form></html>
