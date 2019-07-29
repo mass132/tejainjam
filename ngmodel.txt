@@ -1,0 +1,75 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ngmodel',
+  templateUrl: './ngmodel.component.html',
+  styleUrls: ['./ngmodel.component.css']
+})
+export class NgmodelComponent implements OnInit {
+employee:any;
+hello:string="welcom";
+  constructor() {
+    this.employee={
+      firstname:"pavan",
+      lastname:"kumar",
+      gender:"male",
+      sal:"1000"
+    };
+   }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
+========================================
+<h1> {{hello|uppercase}}</h1>
+
+    <h1> Emp info using two way data binding</h1>
+    <table border ="5" cellpadding="8" cellspacing="8">
+     <tr>
+    </tr>
+    <tr>
+            <td>firstname</td>
+            <td>
+                    <input type="text" [(ngModel)]="employee.firstname"/>
+            </td>
+        </tr>
+    <tr>
+        <td>lastname</td>
+        <td>
+                <input type="text" [(ngModel)]="employee.lastname"/>
+        </td>
+    </tr>
+        <tr>
+                <td>gender</td>
+                <td>
+                        <input type="text" [(ngModel)]="employee.gender"/>
+                </td>
+    </tr>
+    <tr>
+            <td>sal</td>
+            <td>
+                    <input type="text" [(ngModel)]="employee.sal"/>
+            </td>
+        </tr>
+    </table>
+            <table border ="5" cellpadding="8" cellspacing="8">
+                    <tr>
+                     <th>FirstName </th><th> lastname</th><th>gender</th><th>salary</th>
+                     <tr>
+                     <td>{{employee.firstname|lowercase}}</td>
+                        <td>{{employee.lastname|uppercase}}</td>
+                            <td>{{employee.gender|uppercase}}</td>
+                            <td>{{employee.sal|currency:'USD':true}}</td>
+                                </tr>
+    </table>
+
+	===========================================================
+	<employedetails [empobj]="emp"></employedetails>
+<app-click [empobj] ="emp"></app-click>
+<app-ngmodel></app-ngmodel>
+
+===============================

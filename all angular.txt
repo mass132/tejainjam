@@ -1,0 +1,101 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'pavan',
+  templateUrl: './date.component.html',
+  styleUrls: ['./date.component.css']
+})
+export class DateComponent implements OnInit {
+
+mydate:string;
+
+  constructor() { 
+   //let mydate1=new Date();
+   //this.mydate =mydate1.toDateString();
+setInterval(()=>{let mydate1=new Date();
+this.mydate=mydate1.toDateString() +" "+ mydate1.toLocaleTimeString()},1000)
+
+}
+
+  ngOnInit() {
+  }
+
+}
+==========================
+<h1>{{mydate}}</h1>
+
+===================
+app.ts
+
+
+import { Component } from '@angular/core';
+import {Employee}   from './employedetails/employee';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app-employedetails';
+  emp1:Employee;
+  emp2:Employee;
+emp:any[];
+   constructor() {
+
+     this.emp1=new Employee();
+     this.emp1.empname='pavan';
+     this.emp1.empid=123;
+     this.emp1.sal=20000;
+     this.emp1.edesignation="Analyst";
+     this.emp1.contact=['67671111','3333333','88484'];
+
+     this.emp2=new Employee();
+     this.emp2.empname='pavankumar';
+     this.emp2.empid=1323;
+     this.emp2.sal=90000;
+     this.emp2.edesignation="dat";
+     this.emp2.contact=['11119971111','9779977','88999484'];
+     this.emp=[this.emp1,this.emp2];
+     
+    }}
+	===============
+	<employedetails [empobj]="emp"></employedetails>
+<app-click [empobj] ="emp"></app-click>
+<app-ngmodel></app-ngmodel>
+
+
+======================================
+date ts
+<h1>{{mydate}}</h1>
+
+===============================
+date.html
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'pavan',
+  templateUrl: './date.component.html',
+  styleUrls: ['./date.component.css']
+})
+export class DateComponent implements OnInit {
+
+mydate:string;
+
+  constructor() { 
+   //let mydate1=new Date();
+   //this.mydate =mydate1.toDateString();
+setInterval(()=>{let mydate1=new Date();
+this.mydate=mydate1.toDateString() +" "+ mydate1.toLocaleTimeString()},1000)
+
+}
+
+  ngOnInit() {
+  }
+
+}
+
+
+
+==================
